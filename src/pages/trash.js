@@ -7,7 +7,6 @@ export function Trash(){
     
     return (
         <div>
-            <h1>Trash page</h1>
             <ul>
                 {
                     state.trashMails.map(({mId,subject,content, unread,isStarred}) => <li key={mId}>

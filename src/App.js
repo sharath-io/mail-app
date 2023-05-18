@@ -10,7 +10,6 @@ import {Header} from './components/header';
 function App() {
   return (
     <div className="App">
-      <h1>React App</h1>
       <Header/>
       <Routes>
         <Route path="/" element={<Inbox/>} />

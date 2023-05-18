@@ -5,7 +5,6 @@ export function Spam(){
     const {state} = useContext(MailContext);
     return (
         <div>
-            <h1>Spam page</h1>
             <ul>
                 {
                     state.spamMails.map(({mId,subject,content, unread,isStarred}) => <li key={mId}>

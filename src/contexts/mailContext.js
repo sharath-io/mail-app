@@ -18,6 +18,16 @@ const reducerFunction =(state,{type,id}) =>{
             spamMails: [state.allMails?.find(mail => mail.mId === id), ...state.spamMails],
             allMails: state.allMails.filter(mail => mail.mId!==id)
            };
+        
+        case "READ_UNREAD": return {
+            ...state,
+            allMails: state.allMails.map(mail => mail.mId===id ? {...mail, unread: !mail.unread} : mail)
+           };
+        
+        case "STAR_UNSTAR": return {
+            ...state,
+            allMails: state.allMails.map(mail => mail.mId===id ? {...mail, isStarred: !mail.isStarred} : mail)
+           };
 
         default : return state
     }
