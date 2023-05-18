@@ -1,4 +1,5 @@
 import { useContext } from "react"
+import {NavLink} from 'react-router-dom';
 import { MailContext } from "../contexts/mailContext"
 
 export function Inbox(){
@@ -22,6 +23,7 @@ export function Inbox(){
                           <button onClick={()=> dispatch({type:'STAR_UNSTAR', id: mId})}>{isStarred ? 'UnStar' : 'Star'}</button>
                         </div>
                         <p>{content}</p>
+                        <NavLink to={`/mail/${mId}`}>view details</NavLink>
                         <div className="action-btn">
                         <button className="delete-btn" onClick={()=> dispatch({type:'DEL', id: mId})}>Delete</button>
                         <button className="mark-btn" onClick={()=> dispatch({type:'READ_UNREAD', id: mId})}>Mark as {unread ? 'Read' : 'Unread'}</button>
