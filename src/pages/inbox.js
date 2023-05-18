@@ -9,7 +9,7 @@ export function Inbox(){
             <h3>Unread : {state.allMails.filter(mail => mail.unread).length}</h3>
             <ul>
                 {
-                    state.allMails.map(({mId,subject,content, unread,isStarred}) => <li key={mId}>
+                    state.allMails.map(({mId,subject,content, unread,isStarred}) => <li key={mId} style={{backgroundColor:  unread? '#ebf4f5' :'' }}>
                         <div className="subject">
                           <h5>Subject: {subject}</h5>
                           <button onClick={()=> dispatch({type:'STAR_UNSTAR', id: mId})}>{isStarred ? 'UnStar' : 'Star'}</button>
@@ -18,7 +18,7 @@ export function Inbox(){
                         <div className="action-btn">
                         <button className="delete-btn" onClick={()=> dispatch({type:'DEL', id: mId})}>Delete</button>
                         <button className="mark-btn" onClick={()=> dispatch({type:'READ_UNREAD', id: mId})}>Mark as {unread ? 'Read' : 'Unread'}</button>
-                        <button className="spam-btn" onClick={()=> dispatch({type:'SPAM', id: mId})}>Spam</button>
+                        <button className="spam-btn" onClick={()=> dispatch({type:'SPAM', id: mId})}>Report Spam</button>
                         </div>
                     </li>)
                 }

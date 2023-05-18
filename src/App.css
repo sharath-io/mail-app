@@ -61,6 +61,7 @@ li{
 .action-btn button, .subject button{
   background-color: white;
   border: none;
+  height: 30px;
   padding-left: 3rem;
   font-size: 22px;
   font-weight: bold;
