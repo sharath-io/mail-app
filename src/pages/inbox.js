@@ -3,13 +3,20 @@ import { MailContext } from "../contexts/mailContext"
 
 export function Inbox(){
 
-    const {state,dispatch} = useContext(MailContext);
+    const {state,dispatch, filterStarred} = useContext(MailContext);
     return (
         <div>
+            <fieldset style={{textAlign: "left"}}>
+                <legend>FIlters</legend>
+            <label><input type="checkbox" onChange={()=> dispatch({type:'SHOW_UNREAD'})}/>Show Unread emails</label>
+            <label><input type="checkbox"onChange={()=> dispatch({type:'SHOW_STAR'})}/>Show Star emails</label>
+
+            </fieldset>
+            
             <h3>Unread : {state.allMails.filter(mail => mail.unread).length}</h3>
             <ul>
                 {
-                    state.allMails.map(({mId,subject,content, unread,isStarred}) => <li key={mId} style={{backgroundColor:  unread? '#ebf4f5' :'' }}>
+                    filterStarred.map(({mId,subject,content, unread,isStarred}) => <li key={mId} style={{backgroundColor:  unread? '#ebf4f5' :'' }}>
                         <div className="subject">
                           <h5>Subject: {subject}</h5>
                           <button onClick={()=> dispatch({type:'STAR_UNSTAR', id: mId})}>{isStarred ? 'UnStar' : 'Star'}</button>
